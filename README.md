@@ -49,18 +49,33 @@ Physical location is defined by the first four digits after `VIRAT_S_` in a clip
 
 The physical-location result should be interpreted as a **sensitivity analysis**, not a causal estimate of scene memorization. The 3 s and 5 s development results are not statistically distinguishable from chance on the current `N=241` development cohort.
 
+## Reproducing the two final advisor-requested reruns
+
+The exact final scripts used to synchronize the main sensitivity results to the ten canonical seeds are now included:
+
+- `scripts/run_c4_lolo_10seed.py` — frozen-pair physical-location LOLO at G=2 s;
+- `scripts/run_c3_strict_balance_10seed.py` — strict matched-balance sensitivity at G=2 s.
+
+Both scripts contain structural assertions for the expected cohorts and do not load the test split.
+
 ## Repository layout
 
 ```text
 configs/      experiment constants and protocol settings
 manifests/    common-cohort identifiers and manifest documentation
-scripts/      benchmark-construction and audit scripts
+scripts/      verified audit scripts
 results/      compact machine-readable summaries of reported results
+docs/         source and bibliography audit notes
+refs.bib      source-audited manuscript bibliography
 ```
+
+## Reference audit
+
+`docs/reference_audit.md` records the source verification used for the bibliography, including the IEEE/DBLP versus CVF pagination differences for several conference papers. The repository bibliography follows one consistent DOI/IEEE/DBLP convention.
 
 ## Reproducibility status
 
-This repository is being prepared alongside the manuscript revision. Public benchmark-building and audit scripts are included where they have been verified against the reported experiments. Raw VIRAT videos are not included. Frozen matched-pair manifests and additional run artifacts may be added as the archival release is finalized.
+The two final ten-seed rerun scripts, frozen experiment configuration, result summaries, bibliography, and source-audit notes are public. Raw VIRAT videos are not included. Additional frozen pair manifests may be added to the archival release after final verification.
 
 ## Citation
 
