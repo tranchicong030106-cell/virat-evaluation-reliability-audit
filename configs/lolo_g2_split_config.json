@@ -1,0 +1,32 @@
+{
+  "gap_seconds": 2,
+  "physical_location_definition": "first four digits after VIRAT_S_",
+  "holdout_locations": [
+    "0000",
+    "0002",
+    "0400",
+    "0401",
+    "0500"
+  ],
+  "pair_policy": {
+    "frozen_before_split": true,
+    "controls_remined_within_fold": false,
+    "evaluation": "both positive and control are in the held-out physical location",
+    "training": "neither positive nor control is in the held-out physical location",
+    "cross_boundary_pairs": "omitted"
+  },
+  "inner_split": {
+    "train_fraction": 0.85,
+    "validation_fraction": 0.15,
+    "seed": 20260820
+  },
+  "evaluation_pair_counts": {
+    "0000": 203,
+    "0002": 384,
+    "0400": 277,
+    "0401": 282,
+    "0500": 54,
+    "pooled": 1200
+  },
+  "test_split_loaded": false
+}

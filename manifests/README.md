@@ -1,21 +1,15 @@
-# Manifests
+# Frozen manifests
 
-This directory documents the frozen identifiers used by the benchmark audit.
+This directory contains the frozen pair identities and evaluation split labels used by the final manuscript analyses.
 
-## Common cohort
+Pair identity is represented by the unique actor-event key used by the final pipeline. The common development cohort contains 1,138 training pairs and 241 validation pairs. The strict spatial-balance sensitivity removes five validation pairs and retains 236. The G=2 physical-location LOLO evaluation contains 1,200 evaluated pairs across five four-digit physical locations.
 
-The current common cohort is formed by intersecting actor-event keys that are eligible at every evaluated anticipation gap `G in {0,1,2,3,5}` seconds. The development package contains 1,138 training pairs and 241 validation pairs. The test split is intentionally not loaded during development experiments.
+Expected artifacts:
 
-## Physical location
+- `common_cohort_ids.csv`: all 1,379 common-cohort pair identities with `train`/`val` split labels.
+- `strict_balance_removed_ids.csv`: the five validation pair identities removed by the strict-balance sensitivity.
+- `lolo_g2_eval_ids.csv`: the 1,200 G=2 LOLO evaluation pair identities with the held-out four-digit location.
 
-Physical location is parsed from the first four digits after `VIRAT_S_` in the clip identifier. The common cohort contains the five locations:
+The five physical locations are `0000`, `0002`, `0400`, `0401`, and `0500`. Six-digit VIRAT identifiers are camera views and are not treated as physical locations. LOLO uses frozen matched pairs: controls are not re-mined independently inside folds, and cross-boundary pairs are omitted.
 
-`0000`, `0002`, `0400`, `0401`, `0500`.
-
-Six-digit identifiers correspond to camera views and are not treated as physical-location IDs.
-
-## Frozen matched pairs
-
-The LOLO analysis uses frozen positive-control pairs. A pair is evaluated in a held-out fold only when both positive and control belong to the held-out physical location. Cross-boundary pairs are omitted. Controls are not re-mined independently inside each fold.
-
-The full frozen pair manifests are being prepared for the archival release. They are not regenerated from the summary numbers in this repository.
+Raw VIRAT video is not redistributed. The final training scripts retain structural assertions for the expected pair cohorts, while `scripts/verify_reported_metrics.py` checks the public repository configuration and, when the pair-level artifacts are present, recomputes the principal formal PW values from archived ten-seed averaged logits.
