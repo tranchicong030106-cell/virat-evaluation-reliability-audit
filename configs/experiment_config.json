@@ -1,0 +1,76 @@
+{
+  "dataset": {
+    "name": "VIRAT Ground Camera Dataset",
+    "release": "2.0",
+    "extended_annotations": "Kitware VIRAT annotations released under IARPA DIVA",
+    "annotation_partitions_used": ["train", "validate"]
+  },
+  "observation": {
+    "duration_seconds": 3,
+    "fps": 30,
+    "frames": 90,
+    "interval_convention": "half-open"
+  },
+  "gaps_seconds": [0, 1, 2, 3, 5],
+  "target_classes": [
+    "vehicle_starting",
+    "vehicle_stopping",
+    "vehicle_turning_left",
+    "vehicle_turning_right",
+    "Opening",
+    "Closing",
+    "Entering",
+    "Interacts"
+  ],
+  "actor_type_mapping": {
+    "vehicle_starting": "Vehicle",
+    "vehicle_stopping": "Vehicle",
+    "vehicle_turning_left": "Vehicle",
+    "vehicle_turning_right": "Vehicle",
+    "Opening": "Person",
+    "Closing": "Person",
+    "Entering": "Person",
+    "Interacts": "Person",
+    "Construction_Vehicle": "Vehicle"
+  },
+  "matching": {
+    "condition_on_same_target_class": true,
+    "condition_on_same_actor_type": true,
+    "covariates": ["cx", "cy", "bbox_w", "bbox_h"],
+    "motion_covariates_used_for_matching": false
+  },
+  "future_safety": {
+    "safe_window_seconds": 10,
+    "interval": "[t_c, t_c + 10s)"
+  },
+  "current_development_cohort": {
+    "train_pairs": 1138,
+    "validation_pairs": 241,
+    "test_loaded_for_development": false
+  },
+  "physical_locations": ["0000", "0002", "0400", "0401", "0500"],
+  "location_identifier": "first four digits after VIRAT_S_",
+  "camera_view_identifier": "six digits after VIRAT_S_",
+  "model": {
+    "name": "Motion TCN",
+    "role": "predictive probe",
+    "input_channels": 6,
+    "hidden_width": 80,
+    "dilations": [1, 2, 4],
+    "kernel_size": 3,
+    "dropout": 0.2,
+    "parameters": 98561
+  },
+  "training": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "max_epochs": 50,
+    "gradient_clip": 1.0,
+    "early_stopping_metric": "validation AP",
+    "early_stopping_patience": 8,
+    "feature_normalization": "training data only"
+  },
+  "seeds": [42, 1337, 2024, 7, 17, 73, 101, 314, 777, 1729]
+}
