@@ -1,0 +1,49 @@
+{
+  "historical_preprocessing": {
+    "historical_matched_validation_n": 121,
+    "pw_before": 0.9449,
+    "pw_after_endpoint_correction": 0.4959,
+    "chance_interval_95": [0.4132, 0.5868]
+  },
+  "current_gap_formal_pw": {
+    "G0": {"n": 241, "pw": 0.672199, "ci95": [0.614108, 0.730290]},
+    "G1": {"n": 241, "pw": 0.680498, "ci95": [0.622407, 0.738589]},
+    "G2": {"n": 241, "pw": 0.630705, "ci95": [0.568465, 0.688797], "p_two_sided": 0.000043},
+    "G3": {"n": 241, "pw": 0.522822, "ci95": [0.460581, 0.585062], "p_two_sided": 0.437686},
+    "G5": {"n": 241, "pw": 0.535270, "ci95": [0.473029, 0.597510], "p_two_sided": 0.272457}
+  },
+  "lolo_G2_10seed": {
+    "0000": {"n": 203, "pw": 0.556650, "ci95": [0.487685, 0.625616], "p_two_sided": 0.105371},
+    "0002": {"n": 384, "pw": 0.539062, "ci95": [0.489583, 0.588542], "p_two_sided": 0.025255},
+    "0400": {"n": 277, "pw": 0.433213, "ci95": [0.375451, 0.490975], "p_two_sided": 0.030354},
+    "0401": {"n": 282, "pw": 0.574468, "ci95": [0.517730, 0.631206], "p_two_sided": 0.014480},
+    "0500": {"n": 54, "pw": 0.740741, "ci95": [0.611111, 0.851852], "p_two_sided": 0.000269},
+    "pooled": {"n": 1200, "pw": 0.535000, "ci95": [0.506667, 0.563333], "p_two_sided": 0.003994, "ties": 16}
+  },
+  "strict_balance_G2_10seed": {
+    "train_pairs": 1138,
+    "validation_pairs": 236,
+    "removed_pairs": 5,
+    "max_abs_smd": 0.091058,
+    "seedwise_mean_pw": 0.613983,
+    "seedwise_std_pw": 0.008344,
+    "formal_pw": 0.631356,
+    "formal_ci95": [0.567797, 0.690678],
+    "formal_p_two_sided": 0.000048,
+    "ties": 1
+  },
+  "chance_calibration_n241": {
+    "trials": 10000,
+    "pw_mean": 0.500037,
+    "pw_ci95": [0.435685, 0.564315],
+    "ap_mean": 0.506044,
+    "auc_mean": 0.500048,
+    "macro_pw_mean": 0.499975
+  },
+  "future_safety_G2": {
+    "safe_pw": 0.630705,
+    "unsafe_pw": 0.639004,
+    "delta_unsafe_minus_safe": 0.008299,
+    "paired_bootstrap_ci95": [-0.058091, 0.074689]
+  }
+}
