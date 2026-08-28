@@ -95,6 +95,28 @@ assert lolo_ids.groupby("holdout_location").size().to_dict() == {
     "0500": 54,
 }
 
+# Recompute the formal PW values in manuscript Table 3 from the final
+# ten-seed averaged pair logits. This uses archived outputs, not retraining.
+scores = pd.read_csv(ROOT / "results" / "current_gap_seed_averaged_pair_logits.csv.gz")
+assert len(scores) == 1205
+expected_gap_pw = {
+    0: 0.672199,
+    1: 0.680498,
+    2: 0.630705,
+    3: 0.522822,
+    5: 0.535270,
+}
+for gap, expected in expected_gap_pw.items():
+    part = scores[scores["gap"] == gap]
+    assert len(part) == 241
+    pw = float((part["pos_logit"] > part["safe_ctrl_logit"]).mean())
+    assert abs(pw - expected) < 5e-7, (gap, pw, expected)
+
+g2 = scores[scores["gap"] == 2]
+assert g2["unsafe_ctrl_logit"].notna().sum() == 241
+unsafe_pw = float((g2["pos_logit"] > g2["unsafe_ctrl_logit"]).mean())
+assert abs(unsafe_pw - 0.639004) < 5e-7
+
 # Headline numerical results stated in the final paper.
 assert abs(reported["historical_preprocessing"]["pw_before"] - 0.9449) < 5e-7
 assert abs(reported["historical_preprocessing"]["pw_after_endpoint_correction"] - 0.4959) < 5e-7
@@ -111,7 +133,7 @@ assert abs(reported["chance_calibration_n241"]["pw_mean"] - 0.500037) < 5e-7
 
 print("PASS: repository artifacts match the final manuscript anchors.")
 print("  common cohort: 1,138 train + 241 validation")
-print("  G2 formal PW: 0.630705")
+print("  Table 3 formal PW: G0=.672199 G1=.680498 G2=.630705 G3=.522822 G5=.535270")
 print("  strict-balance G2 formal PW: 0.631356 on N=236")
 print("  future-safety unsafe PW: 0.639004")
 print("  LOLO pooled G2 formal PW: 0.535000 on N=1200")
