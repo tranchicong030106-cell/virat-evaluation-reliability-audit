@@ -1,0 +1,63 @@
+{
+  "macro_unweighted_pw": 0.5688269137084868,
+  "pooled": {
+    "N": 1200,
+    "wins": 642,
+    "PW": 0.535,
+    "p_two_sided_exact_binomial": 0.0165392328534717
+  },
+  "heterogeneity": {
+    "cochran_Q": 25.76610541377163,
+    "df": 4,
+    "Q_p_value": 3.5273314596903384e-05,
+    "I2_percent": 84.47572911868141,
+    "fixed_effect_mean_used_for_Q": 0.5375633186606266
+  },
+  "leave_one_location_out": [
+    {
+      "omitted_location": "0000",
+      "N": 997,
+      "wins": 529,
+      "PW": 0.5305917753259779,
+      "normal_CI95_low": 0.4996130105922612,
+      "normal_CI95_high": 0.5615705400596945,
+      "p_two_sided_exact_binomial": 0.05734995281463237
+    },
+    {
+      "omitted_location": "0002",
+      "N": 816,
+      "wins": 435,
+      "PW": 0.5330882352941176,
+      "normal_CI95_low": 0.4988565761140323,
+      "normal_CI95_high": 0.567319894474203,
+      "p_two_sided_exact_binomial": 0.0634771710378594
+    },
+    {
+      "omitted_location": "0400",
+      "N": 923,
+      "wins": 522,
+      "PW": 0.5655471289274107,
+      "normal_CI95_low": 0.5335684176743652,
+      "normal_CI95_high": 0.5975258401804561,
+      "p_two_sided_exact_binomial": 7.650675957937561e-05
+    },
+    {
+      "omitted_location": "0401",
+      "N": 918,
+      "wins": 480,
+      "PW": 0.5228758169934641,
+      "normal_CI95_low": 0.4905648672723998,
+      "normal_CI95_high": 0.5551867667145284,
+      "p_two_sided_exact_binomial": 0.1759586424956517
+    },
+    {
+      "omitted_location": "0500",
+      "N": 1146,
+      "wins": 602,
+      "PW": 0.525305410122164,
+      "normal_CI95_low": 0.4963934963218612,
+      "normal_CI95_high": 0.5542173239224668,
+      "p_two_sided_exact_binomial": 0.09218284503257099
+    }
+  ]
+}
